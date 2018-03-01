@@ -1,2 +1,2 @@
-# coursera-test1
-Test repo for coursera
+# module1-solution
+First assignment on Module 1 Coursera
