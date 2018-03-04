@@ -6,7 +6,7 @@
   function  LunchCheckController($scope){
       $scope.checkLunchMenu = function () {
         var lunchMenuKeyedIn = $scope.lunchMenu;
-        if(lunchMenuKeyedIn!=null){
+        if(lunchMenuKeyedIn!=null && lunchMenuKeyedIn!=""){
           var itemCount = lunchMenuKeyedIn.split(",");
           if(itemCount.length<3 || itemCount.length==3){
             $scope.errorMessage="Enjoy!!!!";
