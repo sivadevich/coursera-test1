@@ -1,23 +1,46 @@
 (function (){
   'use strict' ;
 
-  angular.module('DIApp', [])
-  .controller('DIAppController', DIAppController);
+  angular.module('LunchCheckApp', [])
+  .controller('LunchCheckController', LunchCheckController);
+  LunchCheckController.$inject = ['$scope'];
+  function  LunchCheckController($scope){
+  //  $scope.lunch-menu = "";
 
-  function  DIAppController($scope,$filter,$injector){
-    $scope.name = "SASI";
 
-    $scope.lower = function (){
+      $scope.checkLunchMenu = function () {
 
-      var loweCase =  $filter('lowercase');
-      $scope.name = loweCase($scope.name);
-    }
-      console.log($injector.annotate(DIController));
+        var lunchMenuKeyedIn = $scope.lunchMenu;
+
+        if(lunchMenuKeyedIn!=null){
+          var itemCount = lunchMenuKeyedIn.split(",");
+          console.log("ItemCOunt = "+itemCount.length);
+
+          if(itemCount.length<3 || itemCount.length==3){
+            console.log("Ietm <3 or eq = 3");
+            $scope.errorMessage="Enjoy!!!!";
+
+          }
+          else if(itemCount.length>=4){
+            $scope.errorMessage="Too Much";
+
+          }
+
+        console.log("onclck menu entered - "+$scope.lunchMenu);
+
+        }
+        else{
+          $scope.errorMessage="Please enter data first";
+          return;
+        }
+
+      };
+
+     $scope.clearErrorMessage = function () {
+          $scope.errorMessage="";
+          return;
+      };
+    //  console.log($injector.annotate(LunchCheckController));
   }
-
-  function annotateMe(name,job,blah){
-    return "Blah!!";
-  }
-  console.log(annotateMe.toString());
 
 })();
